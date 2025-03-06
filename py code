@@ -7,14 +7,13 @@ headers = {
 }
 
 def get_product_details(product_url: str) -> dict:
-  # Create an empty product details dictionary
   product_details = {}
 
-  # Get the product page content and create a soup
+  # Get the product page content 
   page = requests.get(product_url, headers=headers)
   soup = BeautifulSoup(page.content, features="lxml")
   try:
-    # Scrape the product details
+    # Scraping product details
     title = soup.find(
       'span', attrs={'id': 'productTitle'}).get_text().strip()
     extracted_price = soup.find(
